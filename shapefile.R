@@ -2,7 +2,7 @@
 
 # Reading the shapefile into R
 library(rgdal)
-shapefile <- readOGR("/home/gsumit/Desktop/yelp/affectation_du_sol", "affectation_du_sol")
+shapefile <- readOGR(".../yelp/affectation_du_sol", "affectation_du_sol")
 
 # Converting the shapefile to a data frame
 yelp_shape <- fortify(shapefile)
