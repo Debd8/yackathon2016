@@ -3,9 +3,9 @@ library(plyr)
 library(dplyr)
 
 # URLs of datasets
-url <- "/home/gsumit/Desktop/yelp/yelp_academic_dataset_business.json"
-url <- "/home/gsumit/Desktop/yelp/yelp_academic_dataset_checkin.json"
-url <- "/home/gsumit/Desktop/yelp/yelp_academic_dataset_review.json"
+url <- ".../yelp/yelp_academic_dataset_business.json"
+url <- ".../yelp/yelp_academic_dataset_checkin.json"
+url <- ".../yelp/yelp_academic_dataset_review.json"
 
 # Parsing json data
 con <- file(url, "r")
@@ -36,9 +36,9 @@ yelp_business_montreal <- yelp_business_montreal[yelp_business_montreal$city %in
 yelp_total <- join(yelp_business_montreal, yelp_checkin, by = "business_id", type = "inner")
 
 # Mashing the datasets business info, transport and clusters and joining by "business_id"
-yelp_total <- read.csv("/home/gsumit/Desktop/Tinni-resumes/yelp/yelp_total.csv", header = T, stringsAsFactors = F)
-yelp_transport <- read.csv("/home/gsumit/Desktop/Tinni-resumes/yelp/closest_bus-metro_stops.csv", header = T, stringsAsFactors = F)
-yelp_clusters <- read.csv("/home/gsumit/Desktop/Tinni-resumes/yelp/RestaurantsWithClusters.csv", header = T, stringsAsFactors = F)
+yelp_total <- read.csv(".../yelp/yelp_total.csv", header = T, stringsAsFactors = F)
+yelp_transport <- read.csv(".../yelp/closest_bus-metro_stops.csv", header = T, stringsAsFactors = F)
+yelp_clusters <- read.csv(".../yelp/RestaurantsWithClusters.csv", header = T, stringsAsFactors = F)
 yelp_total <- join(yelp_total, yelp_transport, by = "business_id", type = "inner", match = "all")
 yelp_total <- join(yelp_total, yelp_clusters, by = "business_id", type = "inner", match = "all")
 yelp_total$X <- NULL
@@ -98,7 +98,7 @@ yelp_restaurant$popularity_factor <- yelp_restaurant$stars/yelp_restaurant$revie
 yelp_restaurant$popularity_factor <- as.numeric(specify_decimal(yelp_restaurant$popularity_factor, 2))
 
 # Pulling the cleaned data into R
-rest_clean <- read.csv("/home/gsumit/Desktop/yelp/rest_clean.csv", header = T, stringsAsFactors = F)
+rest_clean <- read.csv(".../yelp/rest_clean.csv", header = T, stringsAsFactors = F)
 
 # Further data cleaning, removal of unnecessary variables and outlier treatment
 rest_clean[mapply(is.na, rest_clean)] <- "UNKNOWN"
